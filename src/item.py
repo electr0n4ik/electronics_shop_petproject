@@ -5,7 +5,7 @@ class Item:
     pay_rate = 1.0
     all = []
 
-    def __init__(self, __name: str, price: float, quantity: int) -> None:
+    def __init__(self, __name: str, price: float, quantity: int):
         """
         Создание экземпляра класса item.
 
@@ -16,6 +16,7 @@ class Item:
         self.__name = __name
         self.price = price
         self.quantity = quantity
+        Item.all.append(self)  # Добавление экземпляра в список all при создании
 
     @property
     def name(self):
@@ -34,14 +35,11 @@ class Item:
         """
         return self.quantity * self.price
 
-    def apply_discount(self, percent):
+    def apply_discount(self) -> float:
         """
         Применяет установленную скидку для конкретного товара.
         """
-        cur_price = self.price - self.price * (percent / 100)
-        # из-за того, что следующая строка не прошла flake8 я оставил конечную цену с учетом скидки без текста
-        # str_result = f"Стоимость товара с учетом скидки в {percent}% будет -> {cur_price}"
-        return cur_price
+        self.price = self.price * self.pay_rate  # Умножение цены на pay_rate
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -64,7 +62,7 @@ class Item:
             if i.isdigit():
                 str_numbers += i
         if str_numbers == "":
-            return False
+            return 0.0
         else:
             return float(str_numbers)
 
