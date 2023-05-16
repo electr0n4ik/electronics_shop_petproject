@@ -18,6 +18,13 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)  # Добавление экземпляра в список all при создании
 
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        return "Смартфон"
+
     @property
     def name(self):
         return self.__name

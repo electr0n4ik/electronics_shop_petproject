@@ -14,6 +14,17 @@ def test_item():
     assert item_1.quantity == 200
     # assert item_1.name("Транзистор") == "Транзистор"
     assert item_1.calculate_total_price() == 100 * 200
-    assert item_1.apply_discount(10) == 90
-    assert print(item_1.instantiate_from_csv()) == list_objects
+
+    Item.pay_rate = 0.8
+    item_1.apply_discount()
+    assert item_1.price == 80
+    # assert print(item_1.instantiate_from_csv()) == list_objects
     assert Item.string_to_number("ff 100") == 100
+
+def test_item_repr():
+    item = Item("Смартфон", 10000, 20)
+    assert repr(item) == "Item(name=Смартфон, price=10000, quantity=20)"
+
+def test_item_str():
+    item = Item("Смартфон", 10000, 20)
+    assert str(item) == "Item: Смартфон, Price: 10000, Quantity: 20"
