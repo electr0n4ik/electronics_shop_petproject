@@ -18,14 +18,23 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)  # Добавление экземпляра в список all при создании
 
+    def __repr__(self):
+        return f"Item('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        return "Смартфон"
+
     @property
     def name(self):
         return self.__name
 
     @name.setter  # property-name.setter decorator
     def name(self, value):
-        if len(value) < 10:
+        if len(value) <= 10:
             self.__name = value
+        else:
+            return f"Exception: Длина наименования товара превышает 10 символов."
 
     def calculate_total_price(self) -> float:
         """
