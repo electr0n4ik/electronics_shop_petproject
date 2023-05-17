@@ -23,7 +23,7 @@ class Item:
 
     def __str__(self):
         # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
-        return "Смартфон"
+        return self.__name
 
     @property
     def name(self):
