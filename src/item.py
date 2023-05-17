@@ -25,6 +25,9 @@ class Item:
         # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
         return self.__name
 
+    def __add__(self, other):
+        return self.quantity + other.quantity
+
     @property
     def name(self):
         return self.__name
