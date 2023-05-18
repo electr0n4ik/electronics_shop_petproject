@@ -1,3 +1,5 @@
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -26,7 +28,10 @@ class Item:
         return self.__name
 
     def __add__(self, other):
-        return self.quantity + other.quantity
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise ValueError
 
     @property
     def name(self):
@@ -77,6 +82,3 @@ class Item:
             return 0.0
         else:
             return float(str_numbers)
-
-
-
