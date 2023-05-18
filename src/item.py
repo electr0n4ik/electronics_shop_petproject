@@ -1,3 +1,5 @@
+
+
 class Item:
     """
     Класс для представления товара в магазине.
@@ -23,7 +25,13 @@ class Item:
 
     def __str__(self):
         # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
-        return "Смартфон"
+        return self.__name
+
+    def __add__(self, other):
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise ValueError
 
     @property
     def name(self):
@@ -34,7 +42,7 @@ class Item:
         if len(value) <= 10:
             self.__name = value
         else:
-            return f"Exception: Длина наименования товара превышает 10 символов."
+            raise Exception("Длина наименования товара превышает 10 символов.")
 
     def calculate_total_price(self) -> float:
         """
@@ -74,6 +82,3 @@ class Item:
             return 0.0
         else:
             return float(str_numbers)
-
-
-
