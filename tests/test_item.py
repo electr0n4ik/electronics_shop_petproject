@@ -8,6 +8,7 @@ list_objects = """[<src.item.Item object at 0x7f94ad4cb390>,
 <src.item.Item object at 0x7f94ad4cb450>, 
 <src.item.Item object at 0x7f94ad4cb4d0>]"""
 
+
 def test_item():
     assert item_1.name == "Name"
     assert item_1.price == 100
@@ -21,9 +22,11 @@ def test_item():
     # assert print(item_1.instantiate_from_csv()) == list_objects
     assert Item.string_to_number("ff 100") == 100
 
+
 def test_item_repr():
     item = Item("Смартфон", 10000, 20)
     assert repr(item) == "Item(name=Смартфон, price=10000, quantity=20)"
+
 
 def test_item_str():
     item = Item("Смартфон", 10000, 20)

@@ -10,7 +10,7 @@ class Phone(Item):
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
 
     def __add__(self, other):
-        if isinstance(other, Phone):
+        if isinstance(other, Phone) or isinstance(other, Item):
             return self.quantity + other.quantity
         else:
             return None

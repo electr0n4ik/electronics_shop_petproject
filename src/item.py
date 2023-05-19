@@ -21,11 +21,11 @@ class Item:
         Item.all.append(self)  # Добавление экземпляра в список all при создании
 
     def __repr__(self):
-        return f"Item('{self.name}', {self.price}, {self.quantity})"
+        return f"Item(name={self.name}, price={self.price}, quantity={self.quantity})"
 
     def __str__(self):
-        # result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
-        return self.__name
+        result = f"Item: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        return result
 
     def __add__(self, other):
         if isinstance(other, Item):
